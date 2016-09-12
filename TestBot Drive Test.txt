@@ -1,0 +1,35 @@
+task main()
+{
+	while(true)
+	{
+		updateDrive();
+	}
+}
+
+void updateDrive()
+{
+	int leftPower, rightPower, veritcalInput, horizontalInput;
+
+	verticalInput = vexRT[Ch3];
+	horizontalInput = vexRT[Ch1];
+	
+	leftPower = verticalInput;
+	rightPower = veritcalInput; 
+
+	if((leftPower+horizonalInput) <=127 && (rightPower + horizontalInput) <= 127))
+	{
+		leftPower += horizontalInput;
+		rightPower +- horizonalInput;
+	}
+	else								//Case where motor power cannot be increased
+	{								//Subtract from other motor to maintain constant turn, even at higher speeds
+		if(horizonalInput > 0)		
+			rightPower -= (leftPower+horizontalInput-127)	
+		else
+			leftPower -= (rightPower+horizontalInput-127)
+	}
+	motor[leftFront] = leftPower;
+	motor[leftBack] = leftPower;
+	motor[rightFront] = rightPower;
+	motor[rightBack] = rightpower;
+}
